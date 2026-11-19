@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NEXORA — Play beyond</title>
+<meta name="description" content="NEXORA — explore jogos, descubra mundos e conecte-se com amigos.">
+<style>
+:root{color-scheme:dark;--bg:#090b12;--panel:#121622;--line:#252b3d;--text:#eef1ff;--muted:#9ba5bd;--accent:#7c5cff;--cyan:#36d7ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#252044 0,transparent 40%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif}header{position:sticky;top:0;background:#090b12dd;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:4;padding:14px 5%;display:flex;align-items:center;gap:22px}.logo{font-weight:900;font-size:24px;letter-spacing:3px;background:linear-gradient(90deg,#a58cff,#43d9ff);color:transparent;background-clip:text}.nav{display:flex;gap:10px;flex:1}.nav button,.btn{border:1px solid var(--line);background:#161a27;color:var(--text);padding:10px 14px;border-radius:12px;cursor:pointer}.nav button:hover,.btn:hover{border-color:var(--accent);background:#211c38}.profile{display:flex;align-items:center;gap:8px;color:var(--muted)}main{max-width:1200px;margin:auto;padding:26px 5%}.hero{border:1px solid #37315d;background:linear-gradient(120deg,#241b4b,#111827 70%);border-radius:24px;padding:32px;display:flex;justify-content:space-between;align-items:center;gap:20px;min-height:220px}.hero h1{font-size:clamp(30px,5vw,52px);margin:8px 0}.hero p{color:#b7bed3}.primary{background:linear-gradient(90deg,#7857ff,#36bdf2);border:0;color:white;padding:12px 18px;border-radius:12px;font-weight:700;cursor:pointer}.search{margin:24px 0;display:flex;gap:10px}.search input{flex:1;min-width:0;background:#121622;border:1px solid var(--line);padding:13px;border-radius:12px;color:var(--text)}h2{margin:26px 0 14px}.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.filters button{background:#121622;border:1px solid var(--line);border-radius:99px;padding:9px 14px;color:var(--muted);cursor:pointer}.filters button.active{background:#31275b;border-color:#8068ff;color:white}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.game{border:1px solid var(--line);background:var(--panel);border-radius:18px;overflow:hidden;transition:.2s}.game:hover{transform:translateY(-3px);border-color:#6250c9}.art{height:140px;display:grid;place-items:center;font-size:50px;background:linear-gradient(135deg,var(--art1),var(--art2))}.gamebody{padding:15px}.gamebody h3{margin:0 0 6px}.gamebody p{margin:0;color:var(--muted);font-size:14px}.gamebody .btn{margin-top:12px;width:100%}.empty{display:none;color:var(--muted);padding:24px}.modal{display:none;position:fixed;inset:0;background:#0009;z-index:10;place-items:center;padding:18px}.modal.show{display:grid}.modalbox{background:#141824;border:1px solid var(--line);border-radius:20px;padding:24px;max-width:420px;width:100%}.modalbox input{width:100%;margin:10px 0;background:#0c0f18;border:1px solid var(--line);border-radius:10px;padding:12px;color:white}.modalbox .close{float:right;background:none;color:white;border:0;font-size:22px;cursor:pointer}footer{border-top:1px solid var(--line);padding:25px 5%;color:var(--muted);text-align:center;margin-top:40px}
+@media(max-width:600px){header{gap:10px;padding:12px 4%}.logo{font-size:20px}.nav{gap:4px}.nav button{padding:8px;font-size:12px}.profile span{display:none}.hero{padding:24px;display:block}.hero .primary{margin-top:10px}}
+</style>
+</head>
+<body>
+<header><div class="logo">NEXORA</div><nav class="nav"><button onclick="scrollToGames()">Jogos</button><button onclick="showFeature('Amigos')">Amigos</button><button onclick="showFeature('Marketplace')">Marketplace</button></nav><div class="profile"><span id="userLabel">👤 Visitante</span><button class="btn" onclick="openLogin()">Entrar</button></div></header>
+<main>
+<section class="hero"><div><div style="color:#9c8cff;font-weight:700;letter-spacing:2px">PLAY BEYOND</div><h1>Seu próximo mundo<br>começa aqui.</h1><p>Descubra experiências. Encontre amigos. Jogue do seu jeito.</p><button class="primary" onclick="scrollToGames()">Explorar jogos →</button></div><div style="font-size:clamp(50px,12vw,110px)">🌌🎮</div></section>
+<div class="search"><input id="search" placeholder="Buscar jogos..." oninput="filterGames()"><button class="btn" onclick="filterGames()">Buscar</button></div>
+<h2 id="gamesTitle">Experiências em destaque</h2><div class="filters"><button class="active" onclick="setCategory('Todos',this)">Todos</button><button onclick="setCategory('Aventura',this)">Aventura</button><button onclick="setCategory('Simulação',this)">Simulação</button><button onclick="setCategory('Competitivo',this)">Competitivo</button></div>
+<section class="grid" id="grid"></section><p class="empty" id="empty">Nenhum jogo encontrado. Tente outra busca.</p>
+</main><footer>NEXORA © 2026 · Protótipo inicial · Mais mundos em breve</footer>
+<div class="modal" id="modal"><div class="modalbox"><button class="close" onclick="closeModal()">×</button><h2 id="modalTitle">Entrar na NEXORA</h2><p id="modalText">Este protótipo não possui contas online ainda.</p><input id="username" placeholder="Nome de jogador (demo)"><button class="primary" onclick="demoLogin()">Continuar no modo demonstração</button></div></div>
+<script>
+const games=[
+{name:"Skybound Obby",category:"Aventura",emoji:"☁️",description:"Supere obstáculos e alcance o portal.",a:"#283f8e",b:"#50c8ef"},
+{name:"Pet Forge",category:"Simulação",emoji:"🐾",description:"Colecione criaturas e cuide dos seus pets.",a:"#613a84",b:"#e17cbe"},
+{name:"Neon Arena",category:"Competitivo",emoji:"⚡",description:"Entre na arena neon e desafie seus reflexos.",a:"#8b2f6b",b:"#e35468"},
+{name:"Island Tycoon",category:"Simulação",emoji:"🏝️",description:"Construa sua ilha e expanda seu império.",a:"#1d796d",b:"#b0dc70"},
+{name:"Mystic Realms",category:"Aventura",emoji:"🔮",description:"Explore reinos misteriosos e encontre tesouros.",a:"#402d83",b:"#ba7cff"},
+{name:"Velocity Drift",category:"Competitivo",emoji:"🏎️",description:"Corridas rápidas em pistas futuristas.",a:"#a34528",b:"#f0b84b"}];
+let category="Todos";
+function render(){const q=document.getElementById('search').value.toLowerCase();const filtered=games.filter(g=>(category==="Todos"||g.category===category)&&(g.name.toLowerCase().includes(q)||g.description.toLowerCase().includes(q)));document.getElementById('grid').innerHTML=filtered.map(g=>`<article class="game"><div class="art" style="--art1:${g.a};--art2:${g.b}">${g.emoji}</div><div class="gamebody"><h3>${g.name}</h3><p>${g.category} · ${g.description}</p><button class="btn" onclick="play('${g.name}')">Jogar</button></div></article>`).join('');document.getElementById('empty').style.display=filtered.length?'none':'block'}
+function filterGames(){render()}function setCategory(c,b){category=c;document.querySelectorAll('.filters button').forEach(x=>x.classList.remove('active'));b.classList.add('active');render()}function scrollToGames(){document.getElementById('gamesTitle').scrollIntoView({behavior:'smooth'})}
+function play(name){showFeature('Jogo: '+name,'Este jogo é uma demonstração de interface. Os servidores e o multiplayer ainda não estão conectados.')}
+function showFeature(name,txt){document.getElementById('modalTitle').textContent=name;document.getElementById('modalText').textContent=txt||'Esta área está no protótipo e será implementada nas próximas versões.';document.getElementById('modal').classList.add('show')}
+function openLogin(){showFeature('Entrar na NEXORA','Entre em modo demonstração. Não cria uma conta real nem salva dados online.')}
+function demoLogin(){const n=document.getElementById('username').value.trim();if(n){document.getElementById('userLabel').textContent='👤 '+n;closeModal()}else document.getElementById('username').focus()}
+function closeModal(){document.getElementById('modal').classList.remove('show')}render();
+</script>
+</body></html>
