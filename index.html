@@ -84,7 +84,7 @@ box(0,1,-8,5,2,2,0x8a5cf6);box(6,2,-14,4,4,4,0x3abfbd);box(-6,1.5,-12,3,3,3,0xf0
 let avatar=new THREE.Group();scene.add(avatar);
 let skin=0xe5b18a,shirt=0x765bff,pants=0x253c80;
 function part(w,h,d,color,x,y,z){let mesh=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),new THREE.MeshStandardMaterial({color}));mesh.position.set(x,y,z);avatar.add(mesh);return mesh}
-part(.75,.75,.7,skin,0,2.15,0);part(.9,.15,.76,0x4b2c1c,0,2.55,0);part(.95,1,.65,shirt,0,1.25,0);part(.3,.95,.3,skin,-.65,1.25,0);part(.3,.95,.3,skin,.65,1.25,0);part(.35,.85,.4,pants,-.23,.4,0);part(.35,.85,.4,pants,.23,.4,0);
+let savedLook={};try{savedLook=JSON.parse(localStorage.getItem("nexora-avatar")||"{}")}catch{};let hexToNum=c=>parseInt(String(c||"#000000").replace("#",""),16);part(.75,.75,.7,hexToNum(savedLook.skin||"#e5b18a"),0,2.15,0);part(.9,.15,.76,hexToNum(savedLook.hair||"#4b2c1c"),0,2.55,0);part(.95,1,.65,hexToNum(savedLook.shirt||"#765bff"),0,1.25,0);part(.3,.95,.3,skin,-.65,1.25,0);part(.3,.95,.3,skin,.65,1.25,0);part(.35,.85,.4,hexToNum(savedLook.pants||"#253c80"),-.23,.4,0);part(.35,.85,.4,hexToNum(savedLook.pants||"#253c80"),.23,.4,0);
 let collectibles=[];for(let i=0;i<14;i++){let coin=new THREE.Mesh(new THREE.TorusGeometry(.38,.12,8,20),new THREE.MeshStandardMaterial({color:0xffd34e,emissive:0x806000}));coin.position.set((Math.random()*26-13),1.2,(Math.random()*26-13));scene.add(coin);collectibles.push(coin)}
 let keys={},held=new Set(),collected=0,paused=false,velocityY=0,onGround=true;
 function keydown(e){if(["ArrowUp","ArrowDown","ArrowLeft","ArrowRight"," "].includes(e.key))e.preventDefault();keys[e.key.toLowerCase()]=true;if(e.key===" "&&onGround){velocityY=8;onGround=false}}
