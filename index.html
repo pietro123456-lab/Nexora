@@ -101,6 +101,18 @@ main{max-width:1400px;padding:28px clamp(12px,3vw,36px)}
 @media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.gameBody{padding:12px}.gameArt{min-height:110px}.top{gap:8px}.nav{flex:1 1 100%;order:3}.account{margin-left:auto}}
 @media(max-width:480px){main{padding:14px 11px}.grid{grid-template-columns:minmax(0,1fr);gap:12px}.gameCard{display:grid;grid-template-columns:124px minmax(0,1fr);min-height:130px}.gameArt{aspect-ratio:auto;height:100%;min-height:130px;max-height:none;font-size:42px}.gameBody{padding:12px;gap:3px}.gameBody p{font-size:12px}.gameBody button{min-height:38px;margin-top:7px}.meta{padding-top:5px}.top{padding:10px}.nav button{padding:8px 9px}.hero{padding:18px}.hero h1{font-size:30px}}
+
+/* Final interface refinement: cleaner game-platform chrome, hover actions, focus and adaptive spacing */
+:root{--bg:#191a1c;--surface:#252629;--surface2:#303134;--line:#3b3c3f;--text:#f7f7f8;--muted:#c0c1c4;--purple:#3c91ff;--cyan:#72b8ff}
+body{background:#191a1c;color:#f7f7f8;background-image:radial-gradient(ellipse at 50% -12%,#303236 0,transparent 45%)}
+.top{background:#191a1cf2;border-color:#333437}.logo{background:none;color:#fff;letter-spacing:1px}.nav button,.outline,.chip{background:#292a2d;border-color:#414246;color:#ededee}.nav button:hover,.outline:hover,.chip:hover{background:#393a3d;border-color:#66686d}.nav button:focus-visible,.outline:focus-visible,.primary:focus-visible,.chip:focus-visible,.gameBody button:focus-visible{outline:3px solid #85baff;outline-offset:2px}
+.hero{background:linear-gradient(120deg,#2d2e31,#222326 75%);border-color:#45464a}.hero .primary{background:#fff;color:#202124;box-shadow:0 3px 0 #bbb}.hero .primary:hover{background:#ededed}.heroArt{filter:none}
+.gameCard{background:#252629;border-color:#3d3e41;border-radius:10px}.gameCard:hover{border-color:#77797d;box-shadow:0 8px 20px #0005}.gameArt{background-image:linear-gradient(140deg,var(--a),var(--b));transition:filter .2s}.gameCard:hover .gameArt{filter:brightness(1.07)}.gameArt:after{background:#171819b8;color:#eee}.gameBody h3{font-size:16px}.gameBody p{color:#c4c5c8}.meta{color:#b7b8bb}.gameBody button{background:#f1f1f2;color:#222;border:0;font-weight:800;box-shadow:0 2px 0 #bcbec0}.gameBody button:hover{filter:brightness(.94)}
+.primary{background:#fff;color:#242526;box-shadow:0 3px 0 #bbb}.primary:hover{background:#e9e9ea}.chip.active{background:#fff;color:#242526;border-color:#fff}.panel,.stat,.shopItem,.modalBox{background:#252629;border-color:#404145}.searchbar input{background:#292a2d;border-color:#45464a}.gamePlay{background:#191a1c;border-color:#424347}.tile{background:#303134;border-color:#45464a}.tile.revealed{background:#424347}
+@media(min-width:1100px){.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.gameArt{aspect-ratio:16/9}.gameBody{padding:15px}}
+@media(max-width:760px){.top{position:relative}.nav{order:2}.account{order:1}.logo{order:0}.hero{min-height:unset}.sectionHead{align-items:flex-start}}
+@media(max-width:480px){.gameCard{grid-template-columns:116px minmax(0,1fr)}.gameBody h3{font-size:15px}.gameBody button{font-size:13px}.heroBtns{gap:8px}.heroBtns button{min-height:42px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
