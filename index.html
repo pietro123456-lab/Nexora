@@ -20,7 +20,37 @@ body{background:linear-gradient(180deg,#1b3045 0,#121a24 290px,#10151d 100%)}
 .hero{border:2px solid #405c7a;background:radial-gradient(circle at 85% 25%,#4774a4 0,transparent 30%),linear-gradient(125deg,#244765,#172433 72%);border-radius:20px;box-shadow:0 15px 35px #0004}.hero h1{letter-spacing:-1.4px}.primary{background:linear-gradient(180deg,#4ca7e8,#2581c3);box-shadow:0 4px 0 #155b91;border-radius:10px}.primary:hover{filter:brightness(1.1);transform:translateY(-1px)}.outline,.chip{background:#28394c;border-color:#425c77;border-radius:10px}
 .gameCard{border:2px solid #354b62;border-radius:16px;background:linear-gradient(160deg,#202d3c,#17212d);box-shadow:0 7px 0 #080d13;overflow:hidden}.gameCard:hover{transform:translateY(-3px);border-color:#67d3ff;box-shadow:0 9px 0 #080d13,0 0 18px #55bfff24}.gameArt{height:190px;font-size:82px;border-bottom:2px solid #364b61;background-image:radial-gradient(circle at 75% 25%,#ffffff28,transparent 28%),linear-gradient(135deg,var(--a),var(--b))}.gameArt:before{inset:8px;border:1px solid #ffffff30;border-radius:10px}.gameArt:after{content:"NEXORA EXPERIENCE";background:#132232b9;padding:5px 8px;border-radius:6px}.gameBody{padding:16px}.gameBody h3{font-weight:900}.gameBody button.primary{background:linear-gradient(180deg,#4ca7e8,#2581c3);box-shadow:0 4px 0 #155b91}.gameBody button.outline{background:#28394c}.stat,.panel,.shopItem{background:linear-gradient(150deg,#202d3c,#17212c);border-color:#354b62;border-radius:16px}.avatarPreview{background:linear-gradient(160deg,#293e55,#172330);border:1px solid #405a75}.modalBox{background:#1d2937;border-color:#405a75;border-radius:18px}.gamePlay{background:#142230;border-color:#3b526a}.playButton,.gameTap{background:linear-gradient(180deg,#4ca7e8,#2581c3);box-shadow:0 5px 0 #155b91;border-radius:12px}.chip.active{background:#2d6592;border-color:#67d3ff}
 @media(max-width:540px){.gameArt{height:160px}.gameCard{box-shadow:0 5px 0 #080d13}}
-.worldMission{position:absolute;left:12px;top:64px;z-index:3;max-width:min(310px,55vw);background:#172a40dd;border:1px solid #69c8ff55;border-radius:12px;padding:10px 13px;color:#eaf5ff;font-size:12px;box-shadow:0 8px 25px #0005;pointer-events:none}.worldMission b{display:block;color:#78d6ff;letter-spacing:1.5px;font-size:10px;margin-bottom:4px}.worldMission span{line-height:1.35}@media(max-width:520px){.worldMission{top:58px;left:10px;max-width:48vw;font-size:11px}}</style>
+.worldMission{position:absolute;left:12px;top:64px;z-index:3;max-width:min(310px,55vw);background:#172a40dd;border:1px solid #69c8ff55;border-radius:12px;padding:10px 13px;color:#eaf5ff;font-size:12px;box-shadow:0 8px 25px #0005;pointer-events:none}.worldMission b{display:block;color:#78d6ff;letter-spacing:1.5px;font-size:10px;margin-bottom:4px}.worldMission span{line-height:1.35}@media(max-width:520px){.worldMission{top:58px;left:10px;max-width:48vw;font-size:11px}}/* NEXORA platform polish: block-world, discovery UI, and mobile-first game cards */
+:root{--roblox-blue:#00a2ff;--purple:#6b48d7;--surface:#151c2b;--line:#29364c}
+body{background:radial-gradient(ellipse at 50% -10%,#183b63 0,transparent 38%),#0a111d}
+.top{background:#0c1422f2;border-bottom-color:#20344d;box-shadow:0 5px 25px #0003}
+.logo{background:linear-gradient(90deg,#28b7ff,#6d8dff);color:transparent;background-clip:text}
+.nav button{border-radius:9px;font-weight:700}
+.primary{background:linear-gradient(180deg,#19a9ff,#0879df);box-shadow:0 4px 0 #0754a8,0 8px 18px #008dff25;border-radius:10px}
+.primary:active{transform:translateY(2px);box-shadow:0 2px 0 #0754a8}
+.hero{border:1px solid #2c527b;background:linear-gradient(125deg,#0b426c,#12253c 65%,#18283c);box-shadow:0 18px 40px #00152555}
+.hero .eyebrow{color:#62d2ff}
+.gameCard,.panel{border:1px solid #273d57;background:linear-gradient(160deg,#182538,#101927);box-shadow:0 10px 25px #0002}
+.gameCard:hover{border-color:#39baff;transform:translateY(-4px)}
+.gameArt{background-image:linear-gradient(135deg,var(--a),var(--b));isolation:isolate;overflow:hidden}
+.gameArt:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#ffffff16,transparent 48%,#07101c66);z-index:-1}
+.gameArt:after{content:"NEXORA • PLAY";font-size:10px;letter-spacing:2px;color:#ffffffc9;text-shadow:0 2px 8px #0008}
+.gameBody h3{font-size:18px;letter-spacing:.2px}
+.gameBody p{min-height:unset}
+.gameBody button{font-weight:800}
+.chip{font-weight:700;border-radius:10px}
+.chip.active{background:#087dd7;border-color:#31baff}
+.searchbar input{background:#111d2b;border-color:#29435d}
+.avatarPreview{background:linear-gradient(180deg,#12395a,#17253c);border:1px solid #294866}
+.avatarRig{filter:drop-shadow(0 12px 9px #0005)}
+.stat{background:linear-gradient(145deg,#17283d,#111c2b);border-color:#29415b}
+.modal{background:#030913cc;backdrop-filter:blur(8px)}
+.modalBox{background:#121e2d;border:1px solid #2c4c6b;box-shadow:0 24px 80px #0008}
+.outline{border-radius:10px;background:#172538;border-color:#304b68}
+.worldHud button{border-radius:10px;background:#087fd8;border:1px solid #39baff;color:white;font-weight:800}
+.worldCanvas{border-radius:12px;outline:1px solid #2b4b66}
+@media(max-width:650px){.top{flex-wrap:wrap}.nav{order:3;width:100%;flex-basis:100%;padding-bottom:2px}.account{margin-left:auto}.hero{border-radius:18px}.gameBody{padding:14px}.gameBody button{min-height:46px}.section{margin-top:26px}}
+</style>
 </head>
 <body>
 <header class="top">
@@ -58,7 +88,7 @@ function updateStats(){document.getElementById("coinCount").textContent=data.coi
 function renderGames(){let q=document.getElementById("search").value.trim().toLowerCase();let list=GAMES.filter(g=>(filter==="Todos"||g.category===filter)&&(g.name.toLowerCase().includes(q)||g.desc.toLowerCase().includes(q)));document.getElementById("gameGrid").innerHTML=list.map(g=>'<article class="gameCard"><div class="gameArt" style="--a:'+g.colors[0]+';--b:'+g.colors[1]+'">'+g.emoji+'</div><div class="gameBody"><h3>'+g.name+'</h3><p>'+g.desc+'</p><div class="meta">● '+g.category+' · Experiência NEXORA</div><button class="primary" data-game="'+g.id+'">Jogar agora</button></div></article>').join("");document.querySelectorAll("#gameGrid button[data-game]").forEach(btn=>btn.addEventListener("click",()=>startGame(btn.dataset.game)));document.getElementById("emptyGames").style.display=list.length?"none":"block";document.getElementById("gameCount").textContent=list.length+" experiência"+(list.length===1?"":"s")}function toggleFavorite(id){data.favorites=data.favorites||[];data.favorites.includes(id)?data.favorites=data.favorites.filter(x=>x!==id):data.favorites.push(id);save();renderGames()}function setFilter(f,b){filter=f;document.querySelectorAll(".chip").forEach(x=>x.classList.remove("active"));b.classList.add("active");renderGames()}
 function go(id){document.getElementById(id).scrollIntoView({behavior:"smooth",block:"start"})}
 function modal(title,content){document.getElementById("modalTitle").textContent=title;document.getElementById("modalContent").innerHTML=content;document.getElementById("modal").classList.add("open")}
-function closeModal(){clearInterval(gameTimer);gameTimer=null;if(worldKeyCleanup){worldKeyCleanup();worldKeyCleanup=null}document.getElementById("modal").classList.remove("open")}
+function closeModal(){clearInterval(gameTimer);gameTimer=null;if(worldKeyCleanup){worldKeyCleanup();worldKeyCleanup=null}if(window.nexoraFallbackCleanup){window.nexoraFallbackCleanup();window.nexoraFallbackCleanup=null}document.getElementById("modal").classList.remove("open")}
 function openProfile(){modal("Perfil de jogador",'<p class="muted">Seu nome e progresso ficam salvos apenas neste navegador.</p><input id="nameEdit" maxlength="20" placeholder="Nome de jogador" value="'+escapeHtml(data.name==='Visitante'?'':data.name)+'"><button class="primary" onclick="saveProfile()">Salvar perfil</button><p class="notice">Não é uma conta online. Seus dados não sincronizam com outros dispositivos.</p>')}
 function saveProfile(){let n=document.getElementById("nameEdit").value.trim();if(n){data.name=n;save();closeModal()}}
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
@@ -95,7 +125,9 @@ let platforms=[],targets=[];
 let scenery=[];
 function addBuilding(x,z,w,h,d,c){scenery.push({x,y:h/2,z,w,h,d,c});scenery.push({x,y:h+.15,z,w:w*.7,h:.22,d:d*.7,c:[.88,.9,.96]})}
 function addTree(x,z){scenery.push({x,y:1.05,z,w:.22,h:2.1,d:.22,c:[.42,.25,.12]});scenery.push({x,y:2.35,z,w:.9,h:1.15,d:.9,c:[.16,.58,.3]})}
-for(let i=0;i<8;i++){addBuilding((i%2?1:-1)*(13+(i%4)*2),-8-i*12,3.8,4+(i%3)*2.5,4.5,[.3,.42,.62]);addTree(Math.sin(i*2)*12,4-i*10)}
+for(let i=0;i<8;i++){let buildingColor=id==="neon"?[.06,.26,.42]:id==="sky"?[.35,.52,.78]:id==="rush"?[.62,.42,.18]:id==="survival"?[.28,.34,.26]:[.3,.42,.62];addBuilding((i%2?1:-1)*(13+(i%4)*2),-8-i*12,3.8,4+(i%3)*2.5,4.5,buildingColor);addTree(Math.sin(i*2)*12,4-i*10)}
+// Large block landmark silhouettes to give each experience its own recognizable skyline
+for(let j=0;j<5;j++){let h=4+j*1.7,x=(j-2)*7,z=-34-(j%2)*5;scenery.push({x,y:h/2,z,w:2.2,h,d:2.2,c:id==="neon"?[.12,.72,.86]:id==="sky"?[.55,.72,.95]:id==="rush"?[.95,.72,.22]:[.38,.54,.72]})}
 scenery.push({x:0,y:.45,z:-28,w:3,h:.9,d:3,c:[.98,.72,.18]});
 if(id==="neon"){obstacles=[];for(let i=0;i<26;i++)obstacles.push({x:(i%3-1)*3.4,z:-8-i*3,w:1.5,h:2.5,d:2,color:[.1,.8,.95]});for(let i=0;i<24;i++)coinObjs.push({x:(i%3-1)*3.4,y:1.3,z:-5-i*4,got:false});}
 else if(id==="arena"){obstacles=[];for(let i=0;i<8;i++)targets.push({x:Math.sin(i*2)*12,y:2+Math.random()*3,z:-12-i*4,hit:false});}
