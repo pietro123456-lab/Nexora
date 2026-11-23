@@ -556,4 +556,53 @@ document.addEventListener('DOMContentLoaded',()=>{const discovery=document.query
 const discovery=document.querySelector('.nexDiscovery');if(discovery&&!discovery.querySelector('.nexRandomBtn')){const btn=document.createElement('button');btn.className='nexRandomBtn';btn.textContent='🎲 Sortear um jogo';btn.onclick=window.nexRandomGame;discovery.appendChild(btn);}
 window.toggleFavorite=function(id){data.favorites=data.favorites||[];if(data.favorites.includes(id))data.favorites=data.favorites.filter(x=>x!==id);else data.favorites.push(id);save();window.renderGames();};
 })();
+</script><style id="nexora-mega-upgrade">
+#nxCommand{margin:24px 0;padding:20px;border:1px solid #364c65;border-radius:16px;background:linear-gradient(120deg,#16263a,#202438);display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:center}
+#nxCommand h3{margin:0 0 7px;font-size:20px}#nxCommand p{margin:0;color:#a8bad0;font-size:13px;line-height:1.45}
+.nxCmdStats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.nxCmdStat{padding:12px;background:#0e1927;border:1px solid #30465e;border-radius:12px}.nxCmdStat b{display:block;font-size:22px}.nxCmdStat span{font-size:10px;color:#93a8c1;text-transform:uppercase;letter-spacing:1px}
+#nxSpotlight{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0 20px}
+.nxSpotCard{border:1px solid #324962;background:#162335;border-radius:13px;padding:13px;display:flex;align-items:center;gap:12px;cursor:pointer;text-align:left;color:#eef6ff;transition:.18s}
+.nxSpotCard:hover{transform:translateY(-2px);border-color:#5bc5ff;background:#1a2d43}
+.nxSpotCard .nxEmoji{font-size:27px}.nxSpotCard b{display:block;font-size:13px}.nxSpotCard small{display:block;color:#94a9c2;margin-top:4px;font-size:10px}
+#nxToast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:100000;background:#17283b;border:1px solid #52bfff;color:#effaff;padding:12px 18px;border-radius:12px;box-shadow:0 12px 35px #0007;transition:.2s;font-weight:700;font-size:13px;max-width:90vw;text-align:center}
+#nxToast.show{opacity:1;transform:translate(-50%,0)}
+#nxTopBtn{position:fixed;right:15px;bottom:18px;z-index:999;background:#1685d8;border:1px solid #63cfff;color:white;border-radius:50%;width:46px;height:46px;font-size:20px;font-weight:900;box-shadow:0 6px 20px #0005;display:none}
+.nxQuickLinks{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.nxQuickLinks button{background:#253a51;border:1px solid #395a78;border-radius:8px;padding:8px 11px;font-weight:700;font-size:11px;color:#d9efff}
+#nxModalList{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:14px}
+.nxModalGame{border:1px solid #344c66;background:#17263a;color:#eef7ff;border-radius:12px;padding:12px;text-align:left;display:flex;gap:10px;align-items:center}.nxModalGame span{font-size:24px}.nxModalGame b{font-size:13px}.nxModalGame small{display:block;color:#9db3ca;font-size:10px;margin-top:3px}
+@media(max-width:700px){#nxCommand{grid-template-columns:1fr;padding:15px}#nxSpotlight{grid-template-columns:1fr}.nxSpotCard{padding:11px}#nxModalList{grid-template-columns:1fr}.nxCmdStat{padding:10px}.nxCmdStat b{font-size:18px}}
+</style>
+<script id="nexora-mega-upgrade">
+(function(){
+function el(id){return document.getElementById(id)}
+function toast(msg){const t=el('nxToast');if(!t)return;t.textContent=msg;t.classList.add('show');clearTimeout(window.__nxToastTimer);window.__nxToastTimer=setTimeout(()=>t.classList.remove('show'),2400)}
+function featured(){return ['bladeball','clickeraura','reinoleiloes'].map(id=>GAMES.find(g=>g.id===id)).filter(Boolean)}
+function refreshSpot(){const host=el('nxSpotlight');if(!host)return;host.innerHTML=featured().map(g=>'<button class="nxSpotCard" data-nx-id="'+g.id+'"><span class="nxEmoji">'+g.emoji+'</span><span><b>'+g.name+'</b><small>⭐ Experiência em destaque · '+g.category+'</small></span></button>').join('');host.querySelectorAll('[data-nx-id]').forEach(b=>b.addEventListener('click',()=>launch(b.dataset.nxId)))}
+function launch(id){const g=GAMES.find(x=>x.id===id);if(!g)return;window.nexTrackLaunch?.(id);if(g.external){window.open(g.url,'_blank','noopener,noreferrer');toast('Abrindo '+g.name+' em uma nova aba…')}else{startGame(id);toast('Boa partida! '+g.name)}}
+window.nexoraMegaLaunch=launch;
+function command(){
+ if(el('nxCommand'))return;
+ const sec=el('games');if(!sec)return;
+ const box=document.createElement('section');box.id='nxCommand';box.innerHTML='<div><h3>⚡ Central de jogos NEXORA</h3><p>Entre direto nos destaques ou encontre algo novo. Seu histórico e favoritos são deste navegador.</p><div class="nxQuickLinks"><button data-nx-go="progress">🏆 Progresso</button><button data-nx-go="dailyHub">🎯 Missões</button><button data-nx-go="nexoraUniverseHub">🌌 Universo</button><button data-nx-go="market">🛍️ Loja</button></div></div><div class="nxCmdStats"><div class="nxCmdStat"><b id="nxCatalogCount">0</b><span>Experiências</span></div><div class="nxCmdStat"><b id="nxFavCount">0</b><span>Favoritos</span></div><div class="nxCmdStat"><b id="nxLaunchCount">0</b><span>Acessos locais</span></div></div>';
+ sec.insertBefore(box,sec.querySelector('.nexDiscovery'));
+ const spotlight=document.createElement('div');spotlight.id='nxSpotlight';sec.insertBefore(spotlight,sec.querySelector('.nexDiscovery'));
+ box.querySelectorAll('[data-nx-go]').forEach(b=>b.addEventListener('click',()=>{const target=el(b.dataset.nxGo);if(target)target.scrollIntoView({behavior:'smooth',block:'start'})}));
+ refreshSpot();
+}
+function stats(){const c=el('nxCatalogCount'),f=el('nxFavCount'),l=el('nxLaunchCount');if(c)c.textContent=GAMES.length;if(f)f.textContent=(data.favorites||[]).length;if(l){const counts=JSON.parse(localStorage.getItem('nexora-play-counts')||'{}');l.textContent=Object.values(counts).reduce((a,n)=>a+(Number(n)||0),0)}}
+function randomModal(){
+ const candidates=GAMES.filter(g=>(filter==='Todos'||filter==='Favoritos'&&(data.favorites||[]).includes(g.id)||g.category===filter)).filter(g=>{const q=(el('search')?.value||'').toLowerCase().trim();return !q||g.name.toLowerCase().includes(q)||g.desc.toLowerCase().includes(q)||g.category.toLowerCase().includes(q)});
+ if(!candidates.length){toast('Nenhum jogo encontrado com esses filtros.');return}
+ const g=candidates[Math.floor(Math.random()*candidates.length)];
+ modal('🎲 Jogo sorteado','<div style="text-align:center;padding:10px"><div style="font-size:64px">'+g.emoji+'</div><h2>'+g.name+'</h2><p class="muted">'+g.desc+'</p><button class="primary" onclick="nexoraMegaLaunch(\''+g.id+'\');closeModal()">JOGAR AGORA</button><button class="outline" onclick="nexoraMegaLaunchRandom()" style="width:100%;margin-top:10px">Sortear outro</button></div>');
+ window.nexoraMegaLaunchRandom=randomModal;
+}
+window.nexoraMegaLaunchRandom=randomModal;
+function improveRenderer(){const old=window.renderGames;if(typeof old!=='function')return;window.renderGames=function(){old();const grid=el('gameGrid');if(!grid)return;grid.querySelectorAll('.gameCard').forEach(card=>{const title=card.querySelector('h3')?.textContent||'';const g=GAMES.find(x=>x.name===title);if(!g)return;const play=card.querySelector('button[data-game]');if(play&&!play.dataset.nxWired){play.dataset.nxWired='1';play.addEventListener('click',()=>startGame(g.id));}const anchor=card.querySelector('a.primary');if(anchor&&!anchor.dataset.nxWired){anchor.dataset.nxWired='1';anchor.addEventListener('click',()=>{toast('Abrindo '+g.name+'…')})}});stats();refreshSpot()}}
+function randomButton(){const d=el('nexGameSort')?.parentElement;if(!d||d.querySelector('[data-nx-random]'))return;const b=document.createElement('button');b.className='nexRandomBtn';b.dataset.nxRandom='1';b.textContent='🎲 Sortear jogo';b.onclick=randomModal;d.appendChild(b)}
+function shortcuts(){document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();el('search')?.focus();el('search')?.scrollIntoView({behavior:'smooth',block:'center'})}if(e.key==='/'&&!['INPUT','TEXTAREA'].includes(document.activeElement?.tagName)){e.preventDefault();el('search')?.focus()}if(e.key==='Escape'){const modalEl=el('modal');if(modalEl?.classList.contains('open'))closeModal()}});const search=el('search');if(search&&!search.dataset.nxShortcut){search.dataset.nxShortcut='1';search.placeholder='Buscar jogos… (Ctrl/⌘ + K)';}}
+function floating(){if(el('nxTopBtn'))return;const b=document.createElement('button');b.id='nxTopBtn';b.title='Voltar ao topo';b.textContent='↑';b.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});document.body.appendChild(b);window.addEventListener('scroll',()=>{b.style.display=window.scrollY>500?'grid':'none'},{passive:true});const t=document.createElement('div');t.id='nxToast';t.setAttribute('role','status');t.setAttribute('aria-live','polite');document.body.appendChild(t)}
+const start=()=>{command();improveRenderer();randomButton();floating();stats();refreshSpot()};
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
+})();
 </script></body></html>
