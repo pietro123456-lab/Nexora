@@ -540,7 +540,7 @@ body{background:radial-gradient(ellipse at 50% -15%,#1d4c75 0,transparent 34%),r
 let nexSortMode=localStorage.getItem('nexora-sort')||'featured';
 let nexRecent=JSON.parse(localStorage.getItem('nexora-recent')||'[]');
 const baseRender=window.renderGames;
-window.nexTrackLaunch=function(id){nexRecent=[id,...nexRecent.filter(x=>x!==id)].slice(0,5);localStorage.setItem('nexora-recent',JSON.stringify(nexRecent));};
+window.nexTrackLaunch=function(id){nexRecent=[id,...nexRecent.filter(x=>x!==id)].slice(0,5);localStorage.setItem('nexora-recent',JSON.stringify(nexRecent));const counts=JSON.parse(localStorage.getItem('nexora-play-counts')||'{}');counts[id]=(counts[id]||0)+1;localStorage.setItem('nexora-play-counts',JSON.stringify(counts));};
 window.nexSortGames=function(mode){nexSortMode=mode;localStorage.setItem('nexora-sort',mode);window.renderGames();};
 window.nexRandomGame=function(){let candidates=GAMES.filter(g=>filter==='Todos'||g.category===filter);if(filter==='Favoritos')candidates=GAMES.filter(g=>(data.favorites||[]).includes(g.id));let q=(document.getElementById('search')?.value||'').trim().toLowerCase();candidates=candidates.filter(g=>g.name.toLowerCase().includes(q)||g.desc.toLowerCase().includes(q)||g.category.toLowerCase().includes(q));if(!candidates.length){alert('Nenhum jogo disponível com esse filtro.');return;}let chosen=candidates[Math.floor(Math.random()*candidates.length)];alert('🎲 Recomendação: '+chosen.name+'!');if(chosen.external)window.open(chosen.url,'_blank','noopener,noreferrer');else startGame(chosen.id);};
 window.renderGames=function(){
