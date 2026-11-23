@@ -75,6 +75,12 @@ body{background:#191b1f;color:#f4f4f5}
 .worldHud button{background:#e0443b;border-color:#e0443b}.worldCanvas{background:#202328;border:1px solid #414348}
 footer{border-color:#34363b;color:#9da0a5}
 @media(max-width:650px){.top{gap:8px}.nav button{font-size:12px}.gameArt{height:155px}.hero{padding:20px}.gameBody{padding:13px}}
+
+/* Responsive layout repair: prevent cards and sections from escaping mobile viewport */
+html,body{width:100%;max-width:100%;overflow-x:hidden}main{width:100%;min-width:0}main>*{min-width:0}.grid{grid-template-columns:repeat(3,minmax(0,1fr));width:100%}.gameCard{min-width:0;width:100%}.gameArt{overflow:hidden}.gameBody{min-width:0}.gameBody h3,.gameBody p{overflow-wrap:anywhere}
+@media(max-width:900px){main{padding:20px 16px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.top{flex-wrap:wrap;gap:10px}.nav{order:3;flex:1 1 100%;width:100%;max-width:100%;padding-bottom:2px}.account{margin-left:auto}.hero{grid-template-columns:1fr;min-height:unset}.heroArt{display:none}.twoCol{grid-template-columns:1fr}.stats{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:560px){main{padding:16px 12px}.grid{grid-template-columns:minmax(0,1fr);gap:12px}.gameArt{height:170px}.gameBody{padding:14px}.gameBody p{min-height:0}.top{padding:10px 12px}.logo{font-size:20px}.nav{gap:6px}.nav button{padding:8px 10px;font-size:12px}.account{gap:6px}.account button{padding:9px 10px}.hero{padding:18px;border-radius:16px}.hero h1{font-size:32px}.hero p{font-size:15px}.searchbar{margin:14px 0}.searchbar input{width:100%}.chips{gap:6px}.chip{padding:8px 11px;font-size:12px}.stats{grid-template-columns:1fr;gap:8px}.twoCol,.shopItems{grid-template-columns:1fr}.section{margin-top:24px}.gameCard:hover{transform:none}}
+@media(min-width:561px) and (max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.gameArt{height:145px}.gameBody{padding:12px}}
 </style>
 </head>
 <body>
