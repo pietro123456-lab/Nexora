@@ -320,11 +320,11 @@ main{padding-bottom:calc(78px + env(safe-area-inset-bottom))!important}
 (function(){
 const KEY='nexora-universe-v1',today=()=>new Date().toISOString().slice(0,10),yesterday=()=>{let d=new Date();d.setDate(d.getDate()-1);return d.toISOString().slice(0,10)};
 const defaultState={xp:0,coins:0,streak:0,lastVisit:'',chestDate:'',eventDate:'',eventClaimed:false,avatar:'🎮',title:'Novato',owned:['base'],equipped:'base',missionsDate:'',missions:{},clan:'',games:0,feed:[]};
-let s;try{s={...defaultState,...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch(e){s={...defaultState}}
+let s;try{s={...defaultState,...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch(e){s={...defaultState}}try{const legacy=JSON.parse(localStorage.getItem('nexora-save')||'{}');if(!localStorage.getItem(KEY))s.coins=Number(legacy.coins||0)}catch(e){}
 const items=[{id:'base',name:'Visual padrão',emoji:'🎮',cost:0,rarity:'Comum'},{id:'nebula',name:'Aura Nebulosa',emoji:'🌌',cost:75,rarity:'Raro'},{id:'crown',name:'Coroa Pixel',emoji:'👑',cost:150,rarity:'Épico'},{id:'dragon',name:'Mascote Dragão',emoji:'🐉',cost:250,rarity:'Lendário'},{id:'star',name:'Óculos Estelar',emoji:'⭐',cost:45,rarity:'Comum'},{id:'rocket',name:'Trilha Foguete',emoji:'🚀',cost:100,rarity:'Raro'},{id:'crystal',name:'Cristal Neon',emoji:'💎',cost:200,rarity:'Épico'}];
 const titles=['Novato','Explorador','Caçador de XP','Veterano','Lenda NEXORA'];
 const missions=[{id:'visit',name:'Visite o Universo',desc:'Acesse o painel Universo',reward:20},{id:'chest',name:'Abra o baú diário',desc:'Resgate seu baú de hoje',reward:30},{id:'event',name:'Participe do evento',desc:'Resgate a recompensa do evento',reward:50}];
-function persist(){localStorage.setItem(KEY,JSON.stringify(s))}
+function persist(){localStorage.setItem(KEY,JSON.stringify(s));try{const legacy=JSON.parse(localStorage.getItem('nexora-save')||'{}');legacy.coins=s.coins;localStorage.setItem('nexora-save',JSON.stringify(legacy));const coinEl=document.getElementById('coinCount');if(coinEl)coinEl.textContent=s.coins}catch(e){}}
 function addFeed(msg){s.feed.unshift({msg,date:today()});s.feed=s.feed.slice(0,6)}
 function level(){return Math.floor(s.xp/100)+1}
 function need(){return 100-(s.xp%100)}
