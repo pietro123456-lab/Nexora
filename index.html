@@ -50,7 +50,32 @@ body{background:radial-gradient(ellipse at 50% -10%,#183b63 0,transparent 38%),#
 .worldHud button{border-radius:10px;background:#087fd8;border:1px solid #39baff;color:white;font-weight:800}
 .worldCanvas{border-radius:12px;outline:1px solid #2b4b66}
 @media(max-width:650px){.top{flex-wrap:wrap}.nav{order:3;width:100%;flex-basis:100%;padding-bottom:2px}.account{margin-left:auto}.hero{border-radius:18px}.gameBody{padding:14px}.gameBody button{min-height:46px}.section{margin-top:26px}}
-/* NEXORA movement/camera polish v2 */.worldMobile{touch-action:none}.joyBase{touch-action:none;user-select:none;-webkit-user-select:none}.camTouch{touch-action:none;user-select:none;-webkit-user-select:none}.worldHud button{min-height:42px;padding:9px 13px}.worldLandscape{overscroll-behavior:contain}@media(max-width:700px){.worldHud{gap:6px}.worldHud button{font-size:12px;padding:8px 10px;min-height:38px}.worldScore{font-size:13px}}/* NEXORA map and movement refinements */#worldMap{pointer-events:none;image-rendering:auto;box-shadow:0 6px 18px #0005}@media(max-width:700px){#worldMap{width:88px!important;height:88px!important;top:8px!important;right:8px!important}.worldHud{padding-bottom:env(safe-area-inset-bottom)}}/* NEXORA mobile performance + pause and map improvements */.worldHud button{backdrop-filter:blur(8px);box-shadow:0 4px 14px #0003}.worldHud button:active{transform:scale(.96)}#worldMap{box-shadow:0 8px 22px #0006;border-color:#78a6d555}@media(max-width:700px){.worldHud{flex-wrap:wrap;max-width:calc(100% - 18px)}.worldHud button{font-size:11px;min-height:35px;padding:6px 9px}}</style>
+/* NEXORA movement/camera polish v2 */.worldMobile{touch-action:none}.joyBase{touch-action:none;user-select:none;-webkit-user-select:none}.camTouch{touch-action:none;user-select:none;-webkit-user-select:none}.worldHud button{min-height:42px;padding:9px 13px}.worldLandscape{overscroll-behavior:contain}@media(max-width:700px){.worldHud{gap:6px}.worldHud button{font-size:12px;padding:8px 10px;min-height:38px}.worldScore{font-size:13px}}/* NEXORA map and movement refinements */#worldMap{pointer-events:none;image-rendering:auto;box-shadow:0 6px 18px #0005}@media(max-width:700px){#worldMap{width:88px!important;height:88px!important;top:8px!important;right:8px!important}.worldHud{padding-bottom:env(safe-area-inset-bottom)}}/* NEXORA mobile performance + pause and map improvements */.worldHud button{backdrop-filter:blur(8px);box-shadow:0 4px 14px #0003}.worldHud button:active{transform:scale(.96)}#worldMap{box-shadow:0 8px 22px #0006;border-color:#78a6d555}@media(max-width:700px){.worldHud{flex-wrap:wrap;max-width:calc(100% - 18px)}.worldHud button{font-size:11px;min-height:35px;padding:6px 9px}}
+/* NEXORA Roblox-inspired platform UI overhaul */
+:root{--bg:#191b1f;--surface:#232529;--surface2:#303236;--line:#414348;--text:#f4f4f5;--muted:#b8b9bd;--purple:#e0443b;--cyan:#ff716b;--good:#66d19e}
+body{background:#191b1f;color:#f4f4f5}
+.top{background:#191b1f;border-bottom:1px solid #34363b;box-shadow:0 4px 16px #0003;padding-top:12px;padding-bottom:12px}
+.logo{background:linear-gradient(90deg,#fff,#d9dadd);color:transparent;background-clip:text;font-weight:1000;letter-spacing:2px}
+.nav button,.outline,.chip{background:#303236;border:1px solid #45474c;color:#e6e7e9;border-radius:8px;font-weight:700}
+.nav button:hover,.outline:hover,.chip:hover{background:#414348;border-color:#66696f}
+.hero{border:1px solid #414348;background:linear-gradient(120deg,#292b30,#1f2125 75%);border-radius:12px;box-shadow:0 8px 22px #0002;min-height:230px}
+.hero .eyebrow{color:#d6d7da}.hero h1{letter-spacing:-.5px}.hero p{color:#c4c5c9}
+.primary{background:#e0443b;box-shadow:0 3px 0 #a82922;border-radius:8px;color:#fff}.primary:hover{background:#f04b43}
+.gameCard,.panel,.stat,.shopItem{background:#232529;border:1px solid #3b3d42;border-radius:12px;box-shadow:none}
+.gameCard:hover{border-color:#76787e;box-shadow:0 8px 20px #0003;transform:translateY(-2px)}
+.gameArt{height:190px;border:0;background-image:linear-gradient(145deg,var(--a),var(--b));border-bottom:1px solid #3b3d42}
+.gameArt:before{inset:0;border:0;border-radius:0;background:linear-gradient(180deg,#0000,#0003)}
+.gameArt:after{content:"NEXORA";left:12px;bottom:10px;font-size:10px;letter-spacing:1.5px;background:#161719bb;border-radius:5px;padding:5px 8px;color:#eee}
+.gameBody{padding:15px}.gameBody h3{font-size:17px;font-weight:800}.gameBody p{color:#b8b9bd}.meta{color:#9da0a5}
+.searchbar input{background:#303236;border:1px solid #4a4c51;color:#fff;border-radius:8px}.searchbar input:focus{border-color:#d2d3d6}
+.chip.active{background:#e0443b;border-color:#e0443b;color:white}
+.modal{background:#000b;backdrop-filter:blur(5px)}.modalBox{background:#232529;border:1px solid #4a4c51;border-radius:14px;box-shadow:0 20px 60px #0008}.modalTop{border-bottom:1px solid #3b3d42;padding-bottom:10px;margin-bottom:10px}.close{color:#f1f1f1}
+.gamePlay{background:#191b1f;border:1px solid #414348;border-radius:12px}.tile{background:#303236;border-color:#45474c}.tile.revealed{background:#414348}
+.avatarPreview{background:linear-gradient(180deg,#303236,#191b1f);border-radius:12px}.avatarRig{transform:scale(1.05)}.avatarControls label{background:#303236;border-color:#45474c;border-radius:8px}
+.worldHud button{background:#e0443b;border-color:#e0443b}.worldCanvas{background:#202328;border:1px solid #414348}
+footer{border-color:#34363b;color:#9da0a5}
+@media(max-width:650px){.top{gap:8px}.nav button{font-size:12px}.gameArt{height:155px}.hero{padding:20px}.gameBody{padding:13px}}
+</style>
 </head>
 <body>
 <header class="top">
