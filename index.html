@@ -163,6 +163,34 @@ main{width:100%;max-width:1320px}
  .modal{padding:8px}.modalBox{padding:15px;max-width:100%}
 }
 @media(max-width:360px){.grid{grid-template-columns:1fr}.gameArt{aspect-ratio:16/9}.account .coins{display:none}}
+
+/* NEXORA SOCIAL & MARKET TAB REDESIGN */
+#friends,#market{padding:0;overflow:hidden}
+#friends>h3,#market>h3{margin:0;padding:20px 20px 16px;border-bottom:1px solid var(--line);font-size:22px}
+.socialTabs,.marketTabs{display:flex;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line);background:#121b28;overflow-x:auto}
+.socialTabs button,.marketTabs button{border:1px solid #344a61;background:#1b2938;color:#aebfd4;border-radius:10px;padding:10px 14px;white-space:nowrap;font-weight:700}
+.socialTabs button.active,.marketTabs button.active{background:#1469a1;border-color:#48baff;color:#fff}
+.tabPane{padding:16px;min-width:0}
+.tabPane[hidden]{display:none!important}
+.friendsStats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:12px}
+.friendsStats>div{background:#142234;border:1px solid #2b4158;border-radius:12px;padding:12px}
+.friendsStats b{display:block;font-size:22px}.friendsStats span{font-size:12px;color:var(--muted)}
+#friendList{display:grid;gap:9px;max-height:350px;overflow:auto}
+#friendList .friendRow{border:1px solid #2b4056;background:#141f2d;border-radius:12px;padding:10px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+#friendList .friendText{flex:1;min-width:90px}
+#friendList .friendRow button{padding:8px 10px;font-size:12px}
+.friendAdd{display:flex;gap:8px;min-width:0}
+.friendAdd input{flex:1;min-width:0;background:#0e1723;border:1px solid #2d4259;border-radius:11px;padding:12px;color:white}
+.marketBalance{margin:14px 16px 0;padding:12px 14px;border:1px solid #405e79;background:#14283b;border-radius:12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.marketTabs{border-bottom:0;padding:14px 16px 4px;background:transparent}
+.marketTabs button{flex:1}
+.shopItems{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:0 16px 16px}
+.shopItem{min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:6px;border:1px solid #30465d;border-radius:13px;background:#142131;padding:14px}
+.shopItem .cosmetic{font-size:36px}.shopItem b{font-size:14px;line-height:1.3}.shopItem .meta{margin:0}
+.shopItem button{margin-top:auto;width:100%;min-height:40px}
+.shopItem.owned{border-color:#2b805f;background:linear-gradient(145deg,#17362f,#14232c)}
+#market .shopItems{margin-top:10px}
+@media(max-width:600px){.section.twoCol{grid-template-columns:1fr;gap:12px}#friends>h3,#market>h3{padding:16px;font-size:20px}.tabPane{padding:12px}.friendsStats>div{padding:10px}.friendAdd button{padding:10px}.shopItems{padding:0 12px 12px}.marketBalance{margin:12px}}
 </style>
 </head>
 <body>
@@ -183,9 +211,15 @@ main{width:100%;max-width:1320px}
 <div class="grid" id="gameGrid"><article class="gameCard"><div class="gameArt" style="--a:#182c58;--b:#40c8ed">🌍</div><div class="gameBody"><h3>NEXORA 3D World</h3><p>Explore um mapa 3D, controle seu avatar e colete moedas.</p><div class="meta">● Arcade · Experiência NEXORA</div><button class="primary" onclick="startGame('world')">Jogar agora</button></div></article><article class="gameCard"><div class="gameArt" style="--a:#102d52;--b:#27c8ef">🏃</div><div class="gameBody"><h3>Neon Runner</h3><p>Toque nos alvos neon e faça pontos.</p><div class="meta">● Arcade</div><button class="primary" onclick="startGame('neon')">Jogar agora</button></div></article><article class="gameCard"><div class="gameArt" style="--a:#4a1e3b;--b:#ed69ac">🎯</div><div class="gameBody"><h3>Arena Click</h3><p>Acerte alvos e acumule pontos.</p><div class="meta">● Reflexo</div><button class="primary" onclick="startGame('arena')">Jogar agora</button></div></article><article class="gameCard"><div class="gameArt" style="--a:#244338;--b:#63d3a1">🧩</div><div class="gameBody"><h3>Block Puzzle</h3><p>Encontre o tile especial.</p><div class="meta">● Memória</div><button class="primary" onclick="startGame('puzzle')">Jogar agora</button></div></article><article class="gameCard"><div class="gameArt" style="--a:#2c4075;--b:#83b8ff">☁️</div><div class="gameBody"><h3>Sky Jump</h3><p>Salte e acumule pontos.</p><div class="meta">● Arcade</div><button class="primary" onclick="startGame('sky')">Jogar agora</button></div></article><article class="gameCard"><div class="gameArt" style="--a:#5a3a20;--b:#f3b94f">⚡</div><div class="gameBody"><h3>Speed Challenge</h3><p>Teste sua velocidade.</p><div class="meta">● Reflexo</div><button class="primary" onclick="startGame('speed')">Jogar agora</button></div></article><article class="gameCard"><div class="gameArt" style="--a:#482626;--b:#e76d70">🛡️</div><div class="gameBody"><h3>Survival</h3><p>Resista à contagem regressiva.</p><div class="meta">● Arcade</div><button class="primary" onclick="startGame('survival')">Jogar agora</button></div></article><article class="gameCard"><div class="gameArt" style="--a:#173f69;--b:#45c7ee">⚡</div><div class="gameBody"><h3>Teste de Reflexo</h3><p>Espere o sinal e toque o mais rápido.</p><div class="meta">● Reflexo</div><button class="primary" onclick="startGame('reaction')">Jogar agora</button></div></article><article class="gameCard"><div class="gameArt" style="--a:#5a3a20;--b:#f3b94f">🪙</div><div class="gameBody"><h3>Coin Rush</h3><p>Coletar moedas antes que o tempo acabe.</p><div class="meta">● Arcade</div><button class="primary" onclick="startGame('rush')">Jogar agora</button></div></article><article class="gameCard"><div class="gameArt" style="--a:#462c76;--b:#b17bff">🧠</div><div class="gameBody"><h3>Memória Neon</h3><p>Encontre pares e treine a memória.</p><div class="meta">● Memória</div><button class="primary" onclick="startGame('memory')">Jogar agora</button></div></article></div><div class="empty" id="emptyGames">Não encontramos jogos com esse nome. Tente outra busca.</div>
 </section>
 <section class="section twoCol">
-<div class="panel" id="friends"><h3>👥 Amigos</h3><p class="muted">Adicione nomes à sua lista local de amigos. (Demonstração neste dispositivo.)</p><div class="searchbar"><input id="friendInput" placeholder="Nome do amigo"><button class="outline" onclick="addFriend()">Adicionar</button></div><div id="friendList"></div></div>
-<div class="panel" id="market"><h3>🛍️ Loja de itens</h3><p class="muted">Use moedas conquistadas nos mini games para desbloquear itens cosméticos de demonstração.</p><div class="shopItems" id="shopItems"></div></div>
-</section>
+<div class="panel" id="friends"><h3>👥 Amigos</h3>
+<div class="socialTabs" role="tablist"><button class="active" id="socialTabList" onclick="socialTab('list')">Lista de amigos</button><button id="socialTabAdd" onclick="socialTab('add')">Adicionar amigo</button></div>
+<div class="tabPane" id="socialPaneList"><div class="friendsStats"><div><b id="friendTotal">0</b><span>Amigos adicionados</span></div><div><b>Local</b><span>Modo de demonstração</span></div></div><div id="friendList"></div></div>
+<div class="tabPane" id="socialPaneAdd" hidden><p class="muted">Adicione um nome à sua lista neste dispositivo.</p><div class="friendAdd"><input id="friendInput" maxlength="24" placeholder="Nome do amigo"><button class="primary" onclick="addFriend()">Adicionar</button></div><p class="notice">Esta lista ainda não conecta jogadores reais.</p></div></div>
+<div class="panel" id="market"><h3>🛍️ Loja</h3><div class="marketBalance"><span>Seu saldo</span><b>🪙 <span id="shopCoinBalance">0</span></b></div>
+<div class="marketTabs" role="tablist"><button class="active" id="marketTabItems" onclick="marketTab('items')">Itens</button><button id="marketTabOwned" onclick="marketTab('owned')">Meus itens</button></div>
+<div class="tabPane" id="marketPaneItems"><p class="muted">Cosméticos de demonstração comprados com moedas dos jogos.</p><div class="shopItems" id="shopItems"></div></div>
+<div class="tabPane" id="marketPaneOwned" hidden><p class="muted">Itens desbloqueados por você.</p><div class="shopItems" id="shopOwnedItems"></div></div></div>
+</section></section>
 <section class="section panel"><h3>🏆 Conquistas</h3><div id="achievements" class="muted">Jogue para desbloquear suas primeiras conquistas.</div></section>
 </main>
 <footer>NEXORA © 2026 · Mini games para jogar e evoluir · <span class="notice">Versão experimental: progresso salvo neste navegador</span></footer>
@@ -282,7 +316,9 @@ function flipMemory(i){if(memoryLock||memoryChosen.includes(i)||document.getElem
 function finish(score,coins,label){if(gameTimer){clearInterval(gameTimer);clearTimeout(gameTimer);gameTimer=null}if(worldKeyCleanup){worldKeyCleanup();worldKeyCleanup=null}data.played++;data.coins+=Math.max(0,coins);if(data.best===null||score>data.best)data.best=score;if(data.played>=1)addAch("primeiro","Primeira partida");if(data.coins>=50)addAch("coins","Colecionador");if(data.played>=5)addAch("veterano","Veterano");save();let c=Math.max(0,coins);let result=document.getElementById("modalContent");if(result)result.innerHTML='<div class="gamePlay"><div><h2>Partida concluída!</h2><p>'+label+'</p><h3>'+c+' moedas</h3><button class="primary" onclick="closeModal()">Continuar</button></div></div>'}
 function addAch(id,name){if(!data.achievements.includes(id))data.achievements.push(id)}
 function renderAchievements(){let names={"primeiro":"🎮 Primeira partida — complete um mini game","coins":"🪙 Colecionador — acumule 50 moedas","veterano":"🏆 Veterano — jogue 5 partidas"};let el=document.getElementById("achievements");if(el)el.innerHTML=Object.entries(names).map(([id,n])=>'<div style="padding:8px 0">'+(data.achievements.includes(id)?"✅ ":"🔒 ")+n+'</div>').join("")}
-function renderShop(){document.getElementById("shopItems").innerHTML=SHOP.map(it=>'<div class="shopItem"><div class="cosmetic">'+it.emoji+'</div><b>'+it.name+'</b><div class="meta">🪙 '+it.cost+'</div><button class="outline" '+(data.items.includes(it.id)?"disabled":"")+' onclick="buyItem(\''+it.id+'\')">'+(data.items.includes(it.id)?"Desbloqueado":"Comprar")+'</button></div>').join("")}
+function marketTab(tab){document.getElementById("marketPaneItems").hidden=tab!=="items";document.getElementById("marketPaneOwned").hidden=tab!=="owned";document.getElementById("marketTabItems").classList.toggle("active",tab==="items");document.getElementById("marketTabOwned").classList.toggle("active",tab==="owned");renderShop()}
+function socialTab(tab){document.getElementById("socialPaneList").hidden=tab!=="list";document.getElementById("socialPaneAdd").hidden=tab!=="add";document.getElementById("socialTabList").classList.toggle("active",tab==="list");document.getElementById("socialTabAdd").classList.toggle("active",tab==="add")}
+function renderShop(){const balance=document.getElementById("shopCoinBalance");if(balance)balance.textContent=data.coins;const owned=SHOP.filter(it=>data.items.includes(it.id));const renderItems=(arr,ownedOnly)=>arr.map(it=>'<div class="shopItem '+(data.items.includes(it.id)?"owned":"")+'"><div class="cosmetic">'+it.emoji+'</div><b>'+escapeHtml(it.name)+'</b><div class="meta">🪙 '+it.cost+'</div><button class="'+(data.items.includes(it.id)?"outline":"primary")+'" '+(data.items.includes(it.id)?"disabled":"")+' onclick="buyItem(\''+it.id+'\')">'+(data.items.includes(it.id)?"✓ Desbloqueado":"Comprar")+'</button></div>').join("");let list=document.getElementById("shopItems"),own=document.getElementById("shopOwnedItems");if(list)list.innerHTML=renderItems(SHOP,false);if(own)own.innerHTML=owned.length?renderItems(owned,true):'<div class="notice">Você ainda não desbloqueou itens.</div>'}
 function buyItem(id){let it=SHOP.find(x=>x.id===id);if(!it||data.items.includes(id))return;if(data.coins<it.cost){alert("Você precisa de mais moedas. Jogue mini games para ganhar.");return}data.coins-=it.cost;data.items.push(id);save();renderShop()}
 function addFriend(){let v=document.getElementById("friendInput").value.trim();if(!v)return;if(!data.friends.includes(v)&&v.toLowerCase()!==data.name.toLowerCase())data.friends.push(v);document.getElementById("friendInput").value="";save();renderFriends()}
 function renderFriends(){let el=document.getElementById("friendList");if(!data.friends.length){el.innerHTML='<p class="notice">Sua lista está vazia. Adicione um nome para testar a lista local.</p>';return}el.innerHTML=data.friends.map(n=>'<div class="friendRow"><div class="avatar">'+escapeHtml(n[0].toUpperCase())+'</div><div class="friendText"><b>'+escapeHtml(n)+'</b><div class="badge">Lista local</div></div><button class="outline" onclick="removeFriend(\''+escapeHtml(n).replace(/'/g,"\\'")+'\')">Remover</button></div>').join("")}
