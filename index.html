@@ -222,7 +222,7 @@ main{width:100%;max-width:1320px}
 </section></section>
 <section class="section panel"><h3>🏆 Conquistas</h3><div id="achievements" class="muted">Jogue para desbloquear suas primeiras conquistas.</div></section>
 </main>
-<footer>NEXORA © 2026 · Mini games para jogar e evoluir · <span class="notice">Versão experimental: progresso salvo neste navegador</span></footer>
+<section class="section twoCol" id="dailyHub"><div class="panel"><h3>📅 Missões diárias</h3><p class="muted">Objetivos renovados diariamente neste dispositivo.</p><div id="dailyMission"></div></div><div class="panel"><h3>📈 Recordes locais</h3><p class="muted">Seu histórico pessoal neste navegador.</p><div id="localRecords"></div></div></section><footer>NEXORA © 2026 · Mini games para jogar e evoluir · <span class="notice">Versão experimental: progresso salvo neste navegador</span></footer>
 <div class="modal" id="modal"><div class="modalBox"><div class="modalTop"><h2 id="modalTitle">NEXORA</h2><button class="close" onclick="closeModal()">×</button></div><div id="modalContent"></div></div></div>
 <script>
 const GAMES=[{id:"world",name:"NEXORA 3D World",category:"Arcade",emoji:"🌍",desc:"Explore um mapa 3D controlando seu avatar, pule e colete moedas.",colors:["#182c58","#40c8ed"]},{id:"neon",name:"Neon Runner",category:"Arcade",emoji:"🏃",desc:"Corra por três pistas, desvie de blocos e pegue moedas.",colors:["#102d52","#27c8ef"]},{id:"arena",name:"Arena Click",category:"Reflexo",emoji:"🎯",desc:"Localize e acerte o alvo que muda de posição na arena.",colors:["#4a1e3b","#ed69ac"]},{id:"puzzle",name:"Block Puzzle",category:"Memória",emoji:"🧩",desc:"Apague todas as luzes; cada toque altera seus vizinhos.",colors:["#244338","#63d3a1"]},{id:"sky",name:"Sky Jump",category:"Arcade",emoji:"☁️",desc:"Escolha plataformas seguras e suba oito etapas nas nuvens.",colors:["#2c4075","#83b8ff"]},{id:"speed",name:"Speed Challenge",category:"Reflexo",emoji:"⚡",desc:"Memorize uma sequência de direções e reproduza sem errar.",colors:["#5a3a20","#f3b94f"]},{id:"survival",name:"Survival",category:"Arcade",emoji:"🛡️",desc:"Leia os avisos e escolha zonas seguras em 12 ondas.",colors:["#482626","#e76d70"]},{id:"reaction",name:"Teste de Reflexo",category:"Reflexo",emoji:"⚡",desc:"Espere o sinal e toque o mais rápido que conseguir.",colors:["#173f69","#45c7ee"]},{id:"rush",name:"Coin Rush",category:"Arcade",emoji:"🪙",desc:"Clique para coletar moedas antes que o tempo acabe.",colors:["#5a3a20","#f3b94f"]},{id:"memory",name:"Memória Neon",category:"Memória",emoji:"🧠",desc:"Encontre todos os pares e treine sua memória.",colors:["#462c76","#b17bff"]}];
@@ -365,5 +365,14 @@ function renderGames(){
 }
 function setFilter(f,b){filter=f;document.querySelectorAll(".chip").forEach(x=>x.classList.remove("active"));if(b)b.classList.add("active");renderGames();}
 renderGames();
+
+/* NEXORA PLAYER PROGRESSION HUB */
+(function(){
+ const dayKey=new Date().toISOString().slice(0,10);
+ if(data.dailyDate!==dayKey){data.dailyDate=dayKey;data.dailyPlays=0;data.dailyRewardClaimed=false;save();}
+ function renderProgressHub(){const mission=document.getElementById('dailyMission');if(mission){let n=Math.min(3,Number(data.dailyPlays||0));mission.innerHTML='<div style="padding:12px;border:1px solid var(--line);border-radius:12px;background:#111d2b"><b>🎮 Jogue 3 mini games</b><p>'+n+'/3 concluídos</p><div style="height:9px;background:#25364b;border-radius:9px;overflow:hidden"><div style="height:100%;width:'+Math.round(n/3*100)+'%;background:linear-gradient(90deg,#20a5ff,#68dbff)"></div></div>'+(data.dailyRewardClaimed?'✅ Recompensa diária recebida!':'🎁 Recompensa: 25 moedas')+'</div>'}const records=document.getElementById('localRecords');if(records)records.innerHTML='<div class="friendRow"><div class="avatar">🎯</div><div class="friendText"><b>Melhor pontuação</b><div class="muted">'+(data.best===null?'Ainda sem recorde':data.best+' pontos')+'</div></div></div><div class="friendRow"><div class="avatar">🎮</div><div class="friendText"><b>Partidas totais</b><div class="muted">'+data.played+'</div></div></div><div class="friendRow"><div class="avatar">🪙</div><div class="friendText"><b>Moedas acumuladas</b><div class="muted">'+data.coins+'</div></div></div>'}
+ const originalFinish=finish;finish=function(score,coins,label){const prevPlayed=Number(data.played||0);originalFinish(score,coins,label);if(Number(data.played)>prevPlayed){data.dailyPlays=Number(data.dailyPlays||0)+1;if(data.dailyPlays>=3&&!data.dailyRewardClaimed){data.coins+=25;data.dailyRewardClaimed=true;save();const balance=document.getElementById('coinCount');if(balance)balance.textContent=data.coins;}renderProgressHub();}};
+ renderProgressHub();
+})();
 </script>
 </body></html>
