@@ -586,7 +586,7 @@ document.addEventListener('DOMContentLoaded',()=>{const discovery=document.query
 const discovery=document.querySelector('.nexDiscovery');if(discovery&&!discovery.querySelector('.nexRandomBtn')){const btn=document.createElement('button');btn.className='nexRandomBtn';btn.textContent='🎲 Sortear um jogo';btn.onclick=window.nexRandomGame;discovery.appendChild(btn);}
 window.toggleFavorite=function(id){data.favorites=data.favorites||[];if(data.favorites.includes(id))data.favorites=data.favorites.filter(x=>x!==id);else data.favorites.push(id);save();window.renderGames();};
 })();
-</script><style id="nexora-mega-upgrade">
+</script><style id="nexora-mega-upgrade-css">
 #nxCommand{margin:24px 0;padding:20px;border:1px solid #364c65;border-radius:16px;background:linear-gradient(120deg,#16263a,#202438);display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:center}
 #nxCommand h3{margin:0 0 7px;font-size:20px}#nxCommand p{margin:0;color:#a8bad0;font-size:13px;line-height:1.45}
 .nxCmdStats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.nxCmdStat{padding:12px;background:#0e1927;border:1px solid #30465e;border-radius:12px}.nxCmdStat b{display:block;font-size:22px}.nxCmdStat span{font-size:10px;color:#93a8c1;text-transform:uppercase;letter-spacing:1px}
